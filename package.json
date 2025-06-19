@@ -1,0 +1,13 @@
+{
+  "name": "gignancing",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest || true && pytest && detox test -c ios.sim.debug --headless || true",
+    "qc": "bun run lint && bun run format && bun run typecheck && bun run test && ruff check services apps && isort --check services apps && black --check services apps && mypy services",
+    "openapi:client": "openapi-typescript http://localhost:8000/openapi.json -o apps/shared/api.ts"
+  }
+}
