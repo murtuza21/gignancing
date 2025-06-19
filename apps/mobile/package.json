@@ -12,12 +12,16 @@
     "expo-status-bar": "~2.3.0",
     "moti": "0.27.1",
     "zustand": "4.5.2",
-    "expo-secure-store": "~12.2.0"
+    "expo-secure-store": "~12.2.0",
+    "@react-native-community/cli": "^13.0.3",
+    "@react-native-community/cli-platform-android": "^13.0.3",
+    "@react-native-community/cli-platform-ios": "^13.0.3",
+    "@react-native-community/cli-server-api": "^13.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "typescript": "^5.4.0",
     "@types/react": "~18.2.37",
-    "@types/react-native": "^0.73.11"
+    "@types/react-native": "0.73.15"
   }
 }

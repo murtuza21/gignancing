@@ -66,7 +66,7 @@ def create_loan(
     _loans[loan_id] = loan
     if idempotency_key:
         _idempotency_keys.add(idempotency_key)
-    audit("create_loan", user_id=1, endpoint="/loans", metadata=str(loan_id))
+    audit("create_loan", user_id=1, endpoint="/loans", meta=str(loan_id))
     track("loan_disbursed", {"loan_id": loan_id})
     return loan
 
@@ -100,7 +100,7 @@ def create_repayment(
         "create_repayment",
         user_id=1,
         endpoint="/repayments",
-        metadata=str(repayment_id),
+        meta=str(repayment_id),
     )
     track("repayment_success", {"repayment_id": repayment_id})
     return repayment
