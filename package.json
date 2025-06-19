@@ -9,5 +9,14 @@
     "test": "vitest || true && pytest && detox test -c ios.sim.debug --headless || true",
     "qc": "bun run lint && bun run format && bun run typecheck && bun run test && ruff check services apps && isort --check services apps && black --check services apps && mypy services",
     "openapi:client": "openapi-typescript http://localhost:8000/openapi.json -o apps/shared/api.ts"
+  },
+  "devDependencies": {
+    "expo": "^53.0.12"
+  },
+  "dependencies": {
+    "expo-router": "^5.1.0",
+    "expo-status-bar": "^2.2.3",
+    "react": "^19.1.0",
+    "react-native": "^0.80.0"
   }
 }

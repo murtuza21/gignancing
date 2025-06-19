@@ -40,12 +40,12 @@ class User(Base):
         DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
     )
 
-    connections: Mapped[list[PlatformConnection]] = relationship(
+    connections: Mapped[list["PlatformConnection"]] = relationship(
         "PlatformConnection", back_populates="user"
     )
-    loans: Mapped[list[Loan]] = relationship("Loan", back_populates="user")
+    loans: Mapped[list["Loan"]] = relationship("Loan", back_populates="user")
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:  # pragma: no cover
         return f"User(id={self.id!r}, email={self.email!r})"
 
 
@@ -61,7 +61,7 @@ class PlatformConnection(Base):
 
     user: Mapped[User] = relationship("User", back_populates="connections")
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:  # pragma: no cover
         return (
             f"PlatformConnection(id={self.id!r}, user_id={self.user_id!r},"
             f" platform={self.platform!r})"
@@ -78,7 +78,7 @@ class Earning(Base):
 
     connection: Mapped[PlatformConnection] = relationship("PlatformConnection")
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:  # pragma: no cover
         return (
             f"Earning(id={self.id!r}, connection_id={self.connection_id!r},"
             f" amount={self.amount!r})"
@@ -97,11 +97,11 @@ class Loan(Base):
     status: Mapped[str] = mapped_column(String(20), default="pending")
 
     user: Mapped[User] = relationship("User", back_populates="loans")
-    repayments: Mapped[list[Repayment]] = relationship(
+    repayments: Mapped[list["Repayment"]] = relationship(
         "Repayment", back_populates="loan"
     )
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:  # pragma: no cover
         return f"Loan(id={self.id!r}, user_id={self.user_id!r}, principal={self.principal!r})"
 
 
@@ -116,7 +116,7 @@ class Repayment(Base):
 
     loan: Mapped[Loan] = relationship("Loan", back_populates="repayments")
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:  # pragma: no cover
         return f"Repayment(id={self.id!r}, loan_id={self.loan_id!r}, amount={self.amount!r})"
 
 
@@ -132,7 +132,7 @@ class Notification(Base):
 
     user: Mapped[User] = relationship("User")
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:  # pragma: no cover
         return f"Notification(id={self.id!r}, user_id={self.user_id!r}, read={self.read!r})"
 
 
@@ -144,14 +144,14 @@ class AuditLog(Base):
         ForeignKey("users.id"), nullable=True
     )
     action: Mapped[str] = mapped_column(String(100))
-    metadata: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    meta: Mapped[Optional[str]] = mapped_column(Text, nullable=True)  # <-- renamed
     ip_address: Mapped[Optional[str]] = mapped_column(String(45), nullable=True)
     user_agent: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
     user: Mapped[Optional[User]] = relationship("User")
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:  # pragma: no cover
         return f"AuditLog(id={self.id!r}, action={self.action!r})"
 
 
@@ -166,5 +166,5 @@ class Consent(Base):
 
     user: Mapped[User] = relationship("User")
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:  # pragma: no cover
         return f"Consent(id={self.id!r}, user_id={self.user_id!r}, type={self.consent_type!r})"

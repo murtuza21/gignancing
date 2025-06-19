@@ -1,0 +1,55 @@
+diff --git a/services/common/models.py b/services/common/models.py
+index 5d3e2c1..c6e4f33 100644
+--- a/services/common/models.py
++++ b/services/common/models.py
+@@
+ class AuditLog(Base):
+@@
+-    metadata: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
++    meta: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+@@
+-        return f"AuditLog(id={self.id!r}, action={self.action!r})"
++        return f"AuditLog(id={self.id!r}, action={self.action!r})"
+diff --git a/services/common/security.py b/services/common/security.py
+index 4a276ce..a8b3d52 100644
+--- a/services/common/security.py
++++ b/services/common/security.py
+@@
+-def audit(
+-    action: str, user_id: Optional[int], endpoint: str, metadata: Optional[str] = None
++def audit(
++    action: str, user_id: Optional[int], endpoint: str, meta: Optional[str] = None
+ ) -> None:
+@@
+-            metadata=metadata,
++            meta=meta,
+diff --git a/services/auth/main.py b/services/auth/main.py
+index 2aa7d70..f5f3c23 100644
+--- a/services/auth/main.py
++++ b/services/auth/main.py
+@@
+-    audit("send_otp", user_id=None, endpoint="/login", metadata=target)
++    audit("send_otp", user_id=None, endpoint="/login", meta=target)
+@@
+-    audit("verify_otp", user_id=None, endpoint="/verify", metadata=target)
++    audit("verify_otp", user_id=None, endpoint="/verify", meta=target)
+diff --git a/services/ledger/main.py b/services/ledger/main.py
+index 917e3db..ab9c0e8 100644
+--- a/services/ledger/main.py
++++ b/services/ledger/main.py
+@@
+-    audit("create_loan", user_id=1, endpoint="/loans", metadata=str(loan_id))
++    audit("create_loan", user_id=1, endpoint="/loans", meta=str(loan_id))
+@@
+-    audit(
+-        "create_repayment",
+-        user_id=1,
+-        endpoint="/repayments",
+-        metadata=str(repayment_id),
+-    )
++    audit(
++        "create_repayment",
++        user_id=1,
++        endpoint="/repayments",
++        meta=str(repayment_id),
++    )

@@ -1,0 +1,23 @@
+{
+  "name": "gignancing-mobile",
+  "private": true,
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "expo": "50.0.21",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native": "0.79.6",
+    "expo-router": "2.0.9",
+    "expo-status-bar": "~2.3.0",
+    "moti": "0.27.1",
+    "zustand": "4.5.2",
+    "expo-secure-store": "~12.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "typescript": "^5.4.0",
+    "@types/react": "~18.2.37",
+    "@types/react-native": "^0.73.11"
+  }
+}
