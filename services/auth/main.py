@@ -40,7 +40,7 @@ def login(payload: OTPRequest) -> dict[str, bool]:
         raise HTTPException(status_code=400, detail="Email or phone required")
     code = "000000"  # demo OTP
     _otps[target] = code
-    audit("send_otp", user_id=None, endpoint="/login", metadata=target)
+    audit("send_otp", user_id=None, endpoint="/login", meta=target)
     track("platform_link_success", {"target": target})
     return {"otp_sent": True}
 
@@ -56,7 +56,7 @@ def verify(payload: OTPVerifyRequest) -> TokenResponse:
     access = prefix + uuid4().hex
     refresh = prefix + uuid4().hex
     _refresh_tokens[refresh] = target
-    audit("verify_otp", user_id=None, endpoint="/verify", metadata=target)
+    audit("verify_otp", user_id=None, endpoint="/verify", meta=target)
     track("offer_view", {"user": target})
     return TokenResponse(access_token=access, refresh_token=refresh)
 
