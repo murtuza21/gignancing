@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "npm --prefix apps/mobile run start",
-    "build": "npm --prefix apps/mobile run build",
+    "build": "vite build",
     "test": "npm run test:mobile && npm run test:services",
     "test:mobile": "npm --prefix apps/mobile run test",
     "test:services": "python -m pytest tests/",
