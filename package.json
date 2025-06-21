@@ -13,7 +13,8 @@
     "web": "expo start --web --config apps/mobile/app.json",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "type-check": "npm --prefix apps/mobile run type-check"
+    "type-check": "npm --prefix apps/mobile run type-check",
+    "postinstall": "npm --prefix apps/mobile install"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
