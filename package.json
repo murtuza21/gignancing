@@ -7,6 +7,10 @@
     "test": "npm run test:mobile && npm run test:services",
     "test:mobile": "npm --prefix apps/mobile run test",
     "test:services": "python -m pytest tests/",
+    "start": "expo start --config apps/mobile/app.json",
+    "android": "expo run:android --config apps/mobile/app.json",
+    "ios": "expo run:ios --config apps/mobile/app.json",
+    "web": "expo start --web --config apps/mobile/app.json",
     "lint": "eslint .",
     "format": "prettier --write .",
     "type-check": "npm --prefix apps/mobile run type-check"
