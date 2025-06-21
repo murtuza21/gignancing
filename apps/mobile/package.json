@@ -2,7 +2,9 @@
   "name": "gignancing-mobile",
   "private": true,
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "expo start"
+  },
   "dependencies": {
     "expo": "50.0.21",
     "react": "18.3.1",

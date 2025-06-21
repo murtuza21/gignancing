@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "bun --cwd apps/mobile start",
     "lint": "eslint .",
     "format": "prettier --check .",
     "typecheck": "tsc --noEmit",
