@@ -2,7 +2,7 @@
   "name": "monorepo",
   "private": true,
   "scripts": {
-    "dev": "npm --prefix apps/mobile run start",
+    "dev": "bun --cwd apps/mobile run start",
     "build": "npm --prefix apps/mobile run build",
     "test": "npm run test:mobile && npm run test:services",
     "test:mobile": "npm --prefix apps/mobile run test",
