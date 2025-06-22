@@ -54,5 +54,9 @@ If you want to run the automated tests:
 ```bash
 npm test
 ```
+If you see an error like `jest: not found`, install the dependencies first with:
+```bash
+npm install
+```
 
 That's it! You can now explore the project and start developing.
